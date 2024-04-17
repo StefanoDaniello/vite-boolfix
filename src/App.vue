@@ -58,6 +58,7 @@ import MainComponent from './components/MainComponent.vue'
     created() {
       this.getMovies();
       this.getSeries(); 
+      console.log(ISO6391.getName('en'));
     }
   }
 </script>
