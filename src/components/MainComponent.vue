@@ -4,7 +4,6 @@
             {{ this.store.error.message }}
         </div>
         <div class="container my-4 py-2 bg-danger text-white text-center bg-opacity-75 rounded-3 d-none ">
-            <span v-for=""></span>
             Non e stato trovato alcun film o serie corrispondente alla ricerca
         </div>
         <div class="container my-4" v-if="!store.loading">

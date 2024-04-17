@@ -5,6 +5,7 @@
 
 <script>
 import axios from 'axios';
+import ISO6391 from 'iso-639-1';
 import { store } from './store';
 import HeaderComponent from './components/HeaderComponent.vue'
 import MainComponent from './components/MainComponent.vue'
@@ -58,7 +59,8 @@ import MainComponent from './components/MainComponent.vue'
     created() {
       this.getMovies();
       this.getSeries(); 
-      console.log(ISO6391.getName('en'));
+      console.log(ISO6391.getName('en')); 
+
     }
   }
 </script>
