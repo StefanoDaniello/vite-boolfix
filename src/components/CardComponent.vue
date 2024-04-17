@@ -4,23 +4,22 @@
         <div class="card-img">
             <img :src="image" class="card-img-top" :alt="title">
         </div>
-    </div>
 
-
-
-    <div class="card-body text-white ">
-        <h5 class="card-title text-center ">{{title}}</h5>
-        <div class="card-text">
-            <p>{{lenguage}}</p>
-            <div class="text-center">
-                <span v-for="star in getStars(vote)" ><i class="fa-solid fa-star text-white"></i></span>
+        <div class="card-body text-white ">
+            <h5 class="card-title text-center ">{{title}}</h5>
+            <div class="card-text">
+                <p>{{lenguage}}</p>
+                <div class="text-center">
+                    <span v-for="star in getStars(vote)" ><i class="fa-solid fa-star text-white"></i></span>
+                </div>
+                <div class="description">
+                    <p class="text-white my-2">{{description}}</p>
+                </div>
+                <p class="text-muted m-2 text-end ">{{date}}</p>
             </div>
-            <div class="description">
-                <p class="text-white my-2">{{description}}</p>
-            </div>
-            <p class="text-muted m-2 text-end ">{{date}}</p>
         </div>
     </div>
+   
 
 </template>
 

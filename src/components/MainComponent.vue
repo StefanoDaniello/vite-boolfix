@@ -1,6 +1,7 @@
 <template>
     <main>
         <div class="container my-4">
+            <h2>Film</h2>
             <div class="row g-0">
                 <div class="col-12 col-md-6 col-lg-3" v-for="movie in store.movieList">
                     <CardComponent
@@ -9,6 +10,19 @@
                     :date="movie.release_date"
                     :vote="movie.vote_average"
                     :description="movie.overview"/>
+                </div>
+            </div>
+        </div>
+        <div class="container my-4">
+            <h2>Serie</h2>
+            <div class="row g-0">
+                <div class="col-12 col-md-6 col-lg-3" v-for="tv in store.tvList">
+                    <CardComponent
+                    :image="this.store.imageUrl + tv.poster_path"
+                    :title="tv.original_name"
+                    :date="tv.first_air_date"
+                    :vote="tv.vote_average"
+                    :description="tv.overview"/>
                 </div>
             </div>
         </div>
