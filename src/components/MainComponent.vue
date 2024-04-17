@@ -12,7 +12,8 @@
                     :title="movie.title"
                     :date="movie.release_date"
                     :vote="movie.vote_average"
-                    :description="movie.overview"/>
+                    :description="movie.overview"
+                    :lenguage="movie.original_language"/>
                 </div>
             </div>
         </div>
@@ -25,7 +26,8 @@
                     :title="tv.original_name"
                     :date="tv.first_air_date"
                     :vote="tv.vote_average"
-                    :description="tv.overview"/>
+                    :description="tv.overview"
+                    :lenguage="tv.original_language"/>
                 </div>
             </div>
         </div>

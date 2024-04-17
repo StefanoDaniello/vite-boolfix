@@ -2,20 +2,23 @@
     
     <div class="st-card" @mouseenter="time()" @mouseleave="prova=false">
         <div class="card-img">
-            <img :src="image" class="card-img-top" :alt="title" :class="{'d-none': prova}">
+            <img :src="image" class="card-img-top" :alt="title" :class="(prova ? 'd-none' : 'd-block')">
         </div>
 
-        <div class="card-body text-white text-center"  @mouseenter="time()" @mouseleave="prova=false"  :class="{'d-block': prova}">
+        <div class="card-body text-white text-center"  :class="(prova ? 'd-block' : 'd-none')">
             <h5 class="card-title text-center ">{{title}}</h5>
             <div class="card-text">
-                <p>{{lenguage}}</p>
+                <div class="flag m-auto my-1">
+                    <img :src="`https://flagcdn.com/w20/${lenguage.toLowerCase()}.png`" :alt="lenguage" >
+                </div>
                 <div class="text-center">
-                    <span v-for="star in getStars(vote)" ><i class="fa-solid fa-star text-white"></i></span>
+                    <span v-for="star in getStars(vote)"><i class="fa-solid fa-star text-white"></i></span>
+                    <span v-for="star in maxStars - getStars(vote)"><i class="fa-regular fa-star text-white"></i></span>
                 </div>
                 <div class="description">
                     <p class="text-white my-2">{{description}}</p>
                 </div>
-                <p class="m-2 text-end ">{{date}}</p>
+                <p class="mx-2 text-end ">{{date}}</p>
             </div>
         </div>
     </div>
@@ -52,13 +55,13 @@
                     this.prova = true
                 }, 200);
             }
-        }
+        },
     }
 </script>
 
 <style lang="scss" scoped>
     .description{
-        height: 200px;
+        height: 180px;
         overflow-y: auto;
     }
     .description::-webkit-scrollbar{
@@ -82,7 +85,10 @@
         top: 0;
         display: none;
     }
-
+    .flag{
+        width: 50px;
+        height: 30px;
+    }
 
 
 </style>
