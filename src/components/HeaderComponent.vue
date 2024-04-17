@@ -1,5 +1,5 @@
 <template>
-   <header class="bg-dark p-3">
+   <header class="bg-dark">
     <div class="container d-flex justify-content-between ">
         <h1 class="text-danger">Boolflix</h1>
         <div class="search-container">
@@ -19,6 +19,11 @@
 </script>
 
 <style lang="scss" scoped>
+    header{
+        height: 90px;
+        display: flex;
+        align-items: center;
+    }
     .search-container{
         display: flex;
         align-items: center;
