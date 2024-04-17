@@ -1,11 +1,11 @@
 <template>
     
-    <div class="st-card" >
+    <div class="st-card" @mouseenter="time()" @mouseleave="prova=false">
         <div class="card-img">
-            <img :src="image" class="card-img-top" :alt="title">
+            <img :src="image" class="card-img-top" :alt="title" :class="{'d-none': prova}">
         </div>
 
-        <div class="card-body text-white ">
+        <div class="card-body text-white text-center"  @mouseenter="time()" @mouseleave="prova=false"  :class="{'d-block': prova}">
             <h5 class="card-title text-center ">{{title}}</h5>
             <div class="card-text">
                 <p>{{lenguage}}</p>
@@ -15,7 +15,7 @@
                 <div class="description">
                     <p class="text-white my-2">{{description}}</p>
                 </div>
-                <p class="text-muted m-2 text-end ">{{date}}</p>
+                <p class="m-2 text-end ">{{date}}</p>
             </div>
         </div>
     </div>
@@ -38,7 +38,8 @@
         data() {
             return {
                 store,
-                maxStars:5
+                maxStars:5,
+                prova:false
             }
         },
         methods: {
@@ -46,6 +47,11 @@
                 const star = Math.ceil(vote / 2)
                return star
             },
+            time(){
+                setTimeout(() => {
+                    this.prova = true
+                }, 200);
+            }
         }
     }
 </script>
@@ -59,6 +65,7 @@
         display: none;
     }
     .st-card {
+    position: relative;
     perspective: 1000px;
     }
     .card-img {
@@ -68,6 +75,14 @@
     }
     .st-card:hover .card-img {
         transform: rotateY(180deg);
+        background-color: black;
     }
+    .card-body{
+        position: absolute;
+        top: 0;
+        display: none;
+    }
+
+
 
 </style>
