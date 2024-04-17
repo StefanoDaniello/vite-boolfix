@@ -1,5 +1,5 @@
 <template>
-  <HeaderComponent/>
+  <HeaderComponent @search="setsearch"/>
   <MainComponent/>
 </template>
 
@@ -29,6 +29,15 @@ import MainComponent from './components/MainComponent.vue'
         axios.get(this.store.apiUrl + this.store.endPoint.tv , this.store.options).then ((res)=>{
          this.store.tvList = res.data.results
         })
+      },
+      setsearch() {
+        if(this.store.search){
+          this.store.options.params.query = this.store.search
+        }else{
+          delete this.store.options.params.query
+        }
+        this.getMovies();
+        this.getSeries(); 
       }
     },
     created() {

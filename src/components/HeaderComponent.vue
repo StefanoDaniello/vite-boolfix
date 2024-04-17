@@ -2,18 +2,26 @@
    <header class="bg-dark">
     <div class="container d-flex justify-content-between ">
         <h1 class="text-danger">Boolflix</h1>
+
         <div class="search-container">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" placeholder="Cerca" class="form-control me-2">
-            <button class="btn btn-danger">Cerca</button>
+            <input type="search" placeholder="Cerca" class="form-control me-2" v-model='store.search'>
+            <button class="btn btn-danger" @click="$emit('search')">Cerca</button>
         </div>
+
     </div>
    </header>
 </template>
 
 <script>
+import { store } from '../store'
     export default {
         name: 'HeaderComponent',
+        data() {
+            return {
+                store
+            }
+        }
 
     }
 </script>
