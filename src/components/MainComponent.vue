@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="container my-4">
-            <h2 :class="{'d-none': !store.title}">Serie</h2>
+            <h2 :class="{'d-none': !store.title}">Serie</h2> 
             <div class="row g-0">
                 <div class="col-12 col-md-6 col-lg-3" v-for="tv in store.tvList">
                     <CardComponent
