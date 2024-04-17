@@ -6,7 +6,7 @@
         <div class="search-container">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="search" placeholder="Cerca" class="form-control me-2" v-model='store.search'>
-            <button class="btn btn-danger" @click="$emit('search') , store.title=true">Cerca</button>
+            <button class="btn btn-danger" @click="$emit('search')">Cerca</button>
         </div>
 
     </div>
