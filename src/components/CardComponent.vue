@@ -10,7 +10,7 @@
         <h5 class="card-title text-center ">{{title}}</h5>
             <div class="card-text">
                 <div class="flag m-auto my-1">
-                    <img :src="`https://flagcdn.com/w20/${lenguage.toLowerCase()}.png`" :alt="lenguage" >
+                    <img :src="`https://flagcdn.com/w20/${flagimg()}.png`" :alt="lenguage" >
                 </div>
                 <div class="text-center">
                     <span v-for="star in getStars(vote)"><i class="fa-solid fa-star text-white"></i></span>
@@ -53,8 +53,25 @@
                 const star = Math.ceil(vote / 2)
                return star
             },
+            flagimg(){
+                if(this.lenguage === 'en'){
+                    return 'gb'
+                }else if(this.lenguage === 'ja'){
+                    return 'jp'
+                }else if(this.lenguage === 'ko'){
+                    return 'kr'
+                }else if(this.lenguage === 'el'){
+                    return 'gr'
+                }else if(this.lenguage === 'zh'){
+                    return 'cn'
+                }else{
+                    return this.lenguage
+                }
+                
+            }
         },
-
+      
+        
 
     }
 </script>
