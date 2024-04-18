@@ -22,7 +22,8 @@ import MainComponent from './components/MainComponent.vue'
     },
     data() {
       return {
-        store
+        store,
+        click:false
       }
     },
     methods: {
@@ -61,13 +62,16 @@ import MainComponent from './components/MainComponent.vue'
         this.getSeries(); 
       },
       videoplay(){
-        document.querySelector(".video-container").play()
-        document.querySelector(".video-container").controls = true
-        document.querySelector(".video-container").currentTime = 0;
-        setTimeout(() => {
-          document.querySelector(".video-container").classList.add('d-none')
-          document.querySelector(".netflix").classList.add('d-block')
-        }, 4000);
+        if(!this.click){
+          this.click = true
+            document.querySelector(".video-container").play()
+            document.querySelector(".video-container").controls = true
+            document.querySelector(".video-container").currentTime = 0;
+          setTimeout(() => {
+            document.querySelector(".video-container").classList.add('d-none')
+            document.querySelector(".netflix").classList.add('d-block')
+          }, 4000);
+        }
       }
     },
     created() {
