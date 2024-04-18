@@ -66,6 +66,7 @@ import MainComponent from './components/MainComponent.vue'
         document.querySelector(".video-container").currentTime = 0;
         setTimeout(() => {
           document.querySelector(".video-container").classList.add('d-none')
+          document.querySelector(".netflix").classList.add('d-block')
         }, 4000);
       }
     },
@@ -90,7 +91,9 @@ import MainComponent from './components/MainComponent.vue'
     object-fit: cover;
     z-index: 2;
   }
-
+  .netflix {
+    display: none;
+  }
   .video-container::-webkit-media-controls {
   display: none !important;
 }
