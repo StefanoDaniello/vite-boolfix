@@ -39,7 +39,7 @@
             date: String,
             vote: Number,
             lenguage: String,
-            description: String
+            description: String,
         },
         data() {
             return {

@@ -22,8 +22,8 @@ export const store = reactive({
     seconds_options:{
         params:{
             api_key: "c2623eb63df32c9f32b41797b4f2efe5",
-            language: "it-IT",
-            query: "star"
+            query: "a",
+            vote_average: 7
         }
     },
 
