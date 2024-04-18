@@ -49,6 +49,22 @@ import VideoComponent from './components/VideoComponent.vue';
           this.store.loading = false
         })
       },
+      getmostpopularmovies(){
+        axios.get(this.store.apiUrl + this.store.endPoint.movie , this.store.seconds_options).then ((res)=>{
+         this.store.mostpopularmovies = res.data.results
+        })
+        .catch((error) => {
+          this.store.error.message = error
+        })
+      },
+      getmostpopularseries(){
+        axios.get(this.store.apiUrl + this.store.endPoint.tv , this.store.seconds_options).then ((res)=>{
+         this.store.mostpopulartv = res.data.results
+        })
+        .catch((error) => {
+          this.store.error.message = error
+        })
+      },
       setsearch() {
         this.store.loading = true
         if(this.store.search){
@@ -66,6 +82,8 @@ import VideoComponent from './components/VideoComponent.vue';
     created() {
       this.getMovies();
       this.getSeries(); 
+      this.getmostpopularmovies();
+      this.getmostpopularseries();
       console.log(ISO6391.getName('en')); 
     },
     

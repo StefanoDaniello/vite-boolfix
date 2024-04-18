@@ -6,6 +6,8 @@ export const store = reactive({
     search: "",
     movieList: [],
     tvList: [],
+    mostpopulartv: [],
+    mostpopularmovies: [],
     loading: false,
     endPoint:{
         movie: "search/movie",
@@ -17,6 +19,14 @@ export const store = reactive({
             language: "it-IT",
         }
     },
+    seconds_options:{
+        params:{
+            api_key: "c2623eb63df32c9f32b41797b4f2efe5",
+            language: "it-IT",
+            query: "star"
+        }
+    },
+
     error:{
         message: "",
     },
