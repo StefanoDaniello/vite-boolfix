@@ -1,12 +1,13 @@
 <template>
-    
-    <div class="st-card" @mouseenter="time()" @mouseleave="prova=false">
-        <div class="card-img">
-            <img :src="image" class="card-img-top" :alt="title" :class="(prova ? 'd-none' : 'd-block')">
-        </div>
 
-        <div class="card-body text-white text-center"  :class="(prova ? 'd-block' : 'd-none')">
-            <h5 class="card-title text-center ">{{title}}</h5>
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+        <img :src="image" class="card-img-top" :alt="title" :class="(prova ? 'd-none' : 'd-block')">
+    </div>
+
+    <div class="flip-card-back">
+        <h5 class="card-title text-center ">{{title}}</h5>
             <div class="card-text">
                 <div class="flag m-auto my-1">
                     <img :src="`https://flagcdn.com/w20/${lenguage.toLowerCase()}.png`" :alt="lenguage" >
@@ -20,8 +21,10 @@
                 </div>
                 <p class="mx-2 text-end ">{{date}}</p>
             </div>
-        </div>
     </div>
+  </div>
+</div>
+
    
 
 </template>
@@ -50,12 +53,8 @@
                 const star = Math.ceil(vote / 2)
                return star
             },
-            time(){
-                setTimeout(() => {
-                    this.prova = true
-                }, 200);
-            },
         },
+
 
     }
 </script>
@@ -68,28 +67,53 @@
     .description::-webkit-scrollbar{
         display: none;
     }
-    .st-card {
-    position: relative;
-    perspective: 1000px;
-    }
-    .card-img {
-        height: 350px;
-        transform-style: preserve-3d;
-        transition: transform 0.6s;
-    }
-    .st-card:hover .card-img {
-        transform: rotateY(180deg);
-        background-color: black;
-    }
-    .card-body{
-        position: absolute;
-        top: 0;
-        display: none;
-    }
+  
     .flag{
         width: 50px;
         height: 30px;
     }
+    .flip-card {
+    background-color: transparent;
+    height: 350px;
+    width: 100%;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    }
 
+    /* This container is needed to position the front and back side */
+    .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    }
+
+    /* Do an horizontal flip when you move the mouse over the flip box container */
+    .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+    }
+
+    /* Position the front and back side */
+    .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    }
+
+    /* Style the front side (fallback if image is missing) */
+    .flip-card-front {
+    background-color: #bbb;
+    color: black;
+    }
+
+    /* Style the back side */
+    .flip-card-back {
+    background-color: black;
+    color: white;
+    transform: rotateY(180deg);
+    }
 
 </style>

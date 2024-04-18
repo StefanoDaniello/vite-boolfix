@@ -1,6 +1,6 @@
 <template>
    <header class="bg-dark">
-    <div class="container d-flex justify-content-between ">
+    <div class="container-fluid d-flex justify-content-between mx-5">
         <h1 class="text-danger">Boolflix</h1>
 
         <div class="search-container">

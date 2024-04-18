@@ -6,9 +6,9 @@
         <div class="container my-4 py-2 bg-danger text-white text-center bg-opacity-75 rounded-3 d-none ">
             Non e stato trovato alcun film o serie corrispondente alla ricerca
         </div>
-        <div class="container my-4" v-if="!store.loading">
+        <div class="container p-4" v-if="!store.loading">
             <h2  :class="{'d-none': !store.title}">Film</h2>
-            <div class="row g-0" >
+            <div class="row g-0">
                 <div class="col-12 col-md-6 col-lg-3" v-for="movie in store.movieList">
                     <CardComponent
                     :image="this.store.imageUrl + movie.poster_path"
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="container my-4" v-if="!store.loading">
+        <div class="container p-4" v-if="!store.loading">
             <h2 :class="{'d-none': !store.title}">Serie</h2> 
             <div class="row g-0">
                 <div class="col-12 col-md-6 col-lg-3" v-for="tv in store.tvList">
@@ -61,5 +61,13 @@
         height: calc(100vh - 90px);
         overflow-y: auto;
         background-color: gray;
+    }
+    .img-carosello{
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        div{
+            width: 100px;
+        }
     }
 </style>
