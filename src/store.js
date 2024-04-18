@@ -19,5 +19,6 @@ export const store = reactive({
     },
     error:{
         message: "",
-    }
+    },
+    title: false
 })
