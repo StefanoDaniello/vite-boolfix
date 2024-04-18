@@ -1,27 +1,20 @@
 <template>
-    <div>
-
-        <div class="card-front">
-            <img :src="(image === 'https://image.tmdb.org/t/p/originalnull' ? '/public/images/NotFoundImg.png' : image)" class="card-img-top" :alt="title" :class="(prova ? 'd-none' : 'd-block')">
-        </div>
-
-        <div class="card-information">
-            <h5 class="card-title text-center ">{{title}}</h5>
-            <div class="card-text">
-                <div class="flag m-auto my-1">
-                    <img :src="`https://flagcdn.com/w20/${flagimg()}.png`" :alt="lenguage" >
-                </div>
-                <div class="text-center">
-                    <span v-for="star in getStars(vote)"><i class="fa-solid fa-star text-white"></i></span>
-                    <span v-for="star in maxStars - getStars(vote)"><i class="fa-regular fa-star text-white"></i></span>
-                </div>
-                <div class="description">
-                    <p class="text-white my-2">{{description}}</p>
-                </div>
-                <p class="mx-2 text-end ">{{date}}</p>
+    <div class="info">
+        <div class="card-body" controls muted @mouseenter="videoplay">
+                <video class="film">
+                    <source src="/src/video/Netflix-intro.mp4" type="video/mp4" >
+                </video>
+            <p class="mx-2 text-end ">{{date}}</p>
+            <h5 class="text-center">{{ title }}</h5>
+            <div class="flag m-auto my-1">
+                <img :src="`https://flagcdn.com/w20/${flagimg()}.png`" :alt="lenguage" >
             </div>
+            <div class="text-center">
+                <span v-for="star in getStars(vote)"><i class="fa-solid fa-star text-white"></i></span>
+                <span v-for="star in maxStars - getStars(vote)"><i class="fa-regular fa-star text-white"></i></span>
+            </div>
+           
         </div>
-
     </div>
 </template>
 
@@ -36,12 +29,12 @@ import{ store } from '../store'
             vote: Number,
             lenguage: String,
             description: String,
+            imgsfondo: String
         },
         data() {
             return {
                 store,
                 maxStars:5,
-                prova:false,
             }
         },
         methods: {
@@ -57,29 +50,46 @@ import{ store } from '../store'
                 }else{
                     return this.lenguage
                 }
+            },
+            videoplay(){
+                document.querySelector(".film").play()
+                document.querySelector(".film").controls = true
+                document.querySelector(".film").currentTime = 0;
             }
-        }
+        },
     }
 </script>
 
 <style lang="scss" scoped>
-    .card-fornt{
-        width: 100%;
-        height: 350px;
-    }
-    .card-information{
+    .info{
         display: none;
-    }
-    .description{
-        height: 180px;
-        overflow-y: auto;
-    }
-    .description::-webkit-scrollbar{
+        background-color: black;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 10;
+        padding: 5px;
+        border-radius: 5px;
+        .card-text{
+            height: 100px;
+            overflow-y: auto;
+        }
+        .card-text::-webkit-scrollbar{
         display: none;
+        }
     }
     .flag{
-        width: 50px;
-        height: 30px;
+        width: 40px;
+        height: 25px;
     }
-   
+    .film{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+    .film::-webkit-media-controls-play-button {
+    display: none !important;
+    }
 </style>
