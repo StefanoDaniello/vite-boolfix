@@ -1,29 +1,29 @@
 <template>
-  <div class="netflix">
-    <HeaderComponent @search="setsearch"/>
-     <MainComponent/>
-  </div>
-    <video controls class="video-container" @click="videoplay">
-      <source src="/src/video/Netflix-intro.mp4" type="video/mp4" >
-    </video>
+  <HeaderComponent @search="setsearch"/>
+  <MainComponent/>
+  <VideoComponent/>
 </template>
 
 <script>
 import axios from 'axios';
 import ISO6391 from 'iso-639-1';
 import { store } from './store';
-import HeaderComponent from './components/HeaderComponent.vue'
-import MainComponent from './components/MainComponent.vue'
+import HeaderComponent from './components/HeaderComponent.vue';
+import MainComponent from './components/MainComponent.vue';
+import ApiLoader from './components/ApiLoader.vue';
+import VideoComponent from './components/VideoComponent.vue';
   export default {
     name: 'App',
     components: {
       HeaderComponent,
-      MainComponent
+      MainComponent,
+      ApiLoader,
+      VideoComponent
+
     },
     data() {
       return {
-        store,
-        click:false
+        store
       }
     },
     methods: {
@@ -61,57 +61,17 @@ import MainComponent from './components/MainComponent.vue'
         this.getMovies();
         this.getSeries(); 
       },
-      videoplay(){
-        if(!this.click){
-          this.click = true
-            document.querySelector(".video-container").play()
-            document.querySelector(".video-container").controls = true
-            document.querySelector(".video-container").currentTime = 0;
-          setTimeout(() => {
-            document.querySelector(".video-container").classList.add('d-none')
-            document.querySelector(".netflix").classList.add('d-block')
-          }, 4000);
-        }
-      }
+      
     },
     created() {
       this.getMovies();
       this.getSeries(); 
       console.log(ISO6391.getName('en')); 
     },
-    mounted() {
-      document.querySelector(".video-container").currentTime = 0.6;
-    }
+    
   }
 </script>
 
 <style lang="scss" scoped>
-  .video-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 2;
-  }
-  .netflix {
-    display: none;
-  }
-  .video-container::-webkit-media-controls {
-  display: none !important;
-}
-
-.video-container::-webkit-media-controls-enclosure {
-  display: none !important;
-}
-
-.video-container::-webkit-media-controls-panel {
-  display: none !important;
-}
-
-.video-container::-webkit-media-controls-play-button {
-  display: none !important;
-}
-
+ 
 </style>
