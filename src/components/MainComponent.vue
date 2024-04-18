@@ -7,7 +7,7 @@
             Non e stato trovato alcun film o serie corrispondente alla ricerca
         </div>
         <div class="container p-4" v-if="!store.loading">
-            <h2  :class="{'d-none': !store.title}">Film</h2>
+            <h2  :class="{'d-none': !store.title}" class="text-white">Film</h2>
             <div class="row g-0">
                 <div class="col-12 col-md-6 col-lg-3" v-for="movie in store.movieList">
                     <CardComponent
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="container p-4" v-if="!store.loading">
-            <h2 :class="{'d-none': !store.title}">Serie</h2> 
+            <h2 :class="{'d-none': !store.title}" class="text-white">Serie</h2> 
             <div class="row g-0">
                 <div class="col-12 col-md-6 col-lg-3" v-for="tv in store.tvList">
                     <CardComponent
@@ -60,7 +60,7 @@
     main{
         height: calc(100vh - 90px);
         overflow-y: auto;
-        background-color: gray;
+        background-color: black;
     }
     .img-carosello{
         width: 100%;

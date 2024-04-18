@@ -1,5 +1,5 @@
 <template>
-   <header class="bg-dark">
+   <header class="bg-black">
     <div class="container-fluid d-flex justify-content-between mx-5">
         <h1 class="text-danger">Boolflix</h1>
 

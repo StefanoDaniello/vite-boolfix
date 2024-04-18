@@ -3,7 +3,7 @@
 <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
-        <img :src="image" class="card-img-top" :alt="title" :class="(prova ? 'd-none' : 'd-block')">
+        <img :src="(image === 'https://image.tmdb.org/t/p/originalnull' ? '/public/images/NotFoundImg.png' : image)" class="card-img-top" :alt="title" :class="(prova ? 'd-none' : 'd-block')">
     </div>
 
     <div class="flip-card-back">
