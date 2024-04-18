@@ -42,7 +42,7 @@
             return {
                 store,
                 maxStars:5,
-                prova:false
+                prova:false,
             }
         },
         methods: {
@@ -54,8 +54,7 @@
                 setTimeout(() => {
                     this.prova = true
                 }, 200);
-            }
-
+            },
         },
 
     }
