@@ -1,10 +1,16 @@
 <template>
-    <div class="info">
-        <div class="card-body" controls muted @mouseenter="videoplay">
-                <video class="film">
+    <div class="info" @mouseenter="videoplay" @mouseleave="videoStop">
+        <div class="card-body" controls muted>
+                <video class="film" ref="film">
                     <source src="/src/video/Netflix-intro.mp4" type="video/mp4" >
                 </video>
             <p class="mx-2 text-end ">{{date}}</p>
+            <div class="icons">
+                <!-- <i class="fa-regular fa-thumbs-up" ></i> -->
+                <i class="fa-solid fa-thumbs-up"></i>
+                <i class="fa-solid fa-share"></i>
+                <i class="fa-solid fa-plus"></i>
+            </div>
             <h5 class="text-center">{{ title }}</h5>
             <div class="flag m-auto my-1">
                 <img :src="`https://flagcdn.com/w20/${flagimg()}.png`" :alt="lenguage" >
@@ -23,13 +29,10 @@ import{ store } from '../store'
     export default {
         name: 'popularComponet',
         props: {
-            image: String,
             title: String,
             date: String,
             vote: Number,
             lenguage: String,
-            description: String,
-            imgsfondo: String
         },
         data() {
             return {
@@ -47,14 +50,34 @@ import{ store } from '../store'
                     return 'gb'
                 }else if(this.lenguage === 'ja'){
                     return 'jp'
+                }else if(this.lenguage === 'ko'){
+                    return 'kr'
+                }else if(this.lenguage === 'el'){
+                    return 'gr'
+                }else if(this.lenguage === 'zh'){
+                    return 'cn'
+                }else if(this.lenguage === 'hi'){
+                    return 'in'
+                }else if(this.lenguage === 'cs'){
+                    return 'cz'
                 }else{
                     return this.lenguage
                 }
             },
             videoplay(){
-                document.querySelector(".film").play()
-                document.querySelector(".film").controls = true
-                document.querySelector(".film").currentTime = 0;
+                const video = this.$refs.film; 
+                video.currentTime = 0;
+                video.play();
+                video.muted = true;
+                video.controls = true;
+            },
+            videoStop(){
+                const video = this.$refs.film; 
+                video.pause();
+                video.controls = false;
+            },
+            like(){
+                
             }
         },
     }
@@ -62,21 +85,16 @@ import{ store } from '../store'
 
 <style lang="scss" scoped>
     .info{
+        border: 1px solid white;
         display: none;
-        background-color: black;
+        background-color: rgba(0, 0, 0, 0.753);
         position: absolute;
         left: 0;
         top: 0;
         z-index: 10;
-        padding: 5px;
+        padding: 10px;
         border-radius: 5px;
-        .card-text{
-            height: 100px;
-            overflow-y: auto;
-        }
-        .card-text::-webkit-scrollbar{
-        display: none;
-        }
+        height: 350px;
     }
     .flag{
         width: 40px;
@@ -86,10 +104,21 @@ import{ store } from '../store'
         width: 100%;
         height: 100%;
         object-fit: cover;
+        z-index: 200;
     }
-
-
     .film::-webkit-media-controls-play-button {
     display: none !important;
+    }
+    .icons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        i{
+            cursor: pointer;
+            color: white;
+            font-size: 20px;
+            padding: 3px;
+        }
     }
 </style>

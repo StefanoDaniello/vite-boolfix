@@ -6,7 +6,10 @@
         <div class="container my-4 py-2 bg-danger text-white text-center bg-opacity-75 rounded-3 d-none ">
             Non e stato trovato alcun film o serie corrispondente alla ricerca
         </div>
-        <div class="container-fluid p-4 bg-black" :class="{'d-none': store.title}">
+
+        <JumboVideo/>
+
+        <div class="container-fluid p-4 bg-black position-relative" :class="{'d-none': store.title}">
             <h2  class="text-white">Most Popular Film</h2>
             <div class="cards-container" ref="card3">
                 <div class="left-button" @click="leftButton3" :class="{'d-none': store.title}"><i class="fa-solid fa-angle-left text-white"></i></div>
@@ -18,7 +21,6 @@
                             :alt="movie.title">
                        </div>
                        <popularComponet
-                            :image="this.store.imageUrl + movie.poster_path"
                             :title="movie.title"
                             :date="movie.release_date"
                             :vote="movie.vote_average"
@@ -27,12 +29,11 @@
                         />
                     </div>
                 </div>
-
                 <div class="right-button" @click="rightButton3" :class="{'d-none': store.title}"><i class="fa-solid fa-angle-right text-white"></i></div>
             </div>
         </div>
 
-        <div class="container-fluid p-3" :class="{'d-none': store.title}">
+        <div class="container-fluid p-3 position-relative" :class="{'d-none': store.title}">
             <h2 class="text-white">Most Popular Serie</h2> 
             <div class="cards-container" ref="card4">
                 <div class="left-button" @click="leftButton4" :class="{'d-none': store.title}"><i class="fa-solid fa-angle-left text-white"></i></div>
@@ -44,20 +45,18 @@
                             :alt="tv.title">
                        </div>
                        <popularComponet
-                            :image="this.store.imageUrl + tv.poster_path"
                             :title="tv.original_name"
                             :date="tv.first_air_date"
                             :vote="tv.vote_average"
                             :description="tv.overview"
                             :lenguage="tv.original_language"/>
                     </div>
-                   
                 </div>
                 <div class="right-button" @click="rightButton4" :class="{'d-none': store.title}"><i class="fa-solid fa-angle-right text-white"></i></div>
             </div>
         </div>
 
-        <div class="container-fluid p-4 bg-black" v-if="!store.loading">
+        <div class="container-fluid p-4 bg-black position-relative" v-if="!store.loading">
             <h2  :class="{'d-none': !store.title}" class="text-white">Film</h2>
             <div class="cards-container" ref="card1">
                 <div class="left-button" @click="leftButton1" :class="{'d-none': !store.title}"><i class="fa-solid fa-angle-left text-white"></i></div>
@@ -74,7 +73,7 @@
             </div>
         </div>
 
-        <div class="container-fluid p-3" v-if="!store.loading">
+        <div class="container-fluid p-3 position-relative" v-if="!store.loading">
             <h2 :class="{'d-none': !store.title}" class="text-white">Serie</h2> 
             <div class="cards-container" ref="card2">
                 <div class="left-button" @click="leftButton2" :class="{'d-none': !store.title}"><i class="fa-solid fa-angle-left text-white"></i></div>
@@ -99,13 +98,15 @@
     import CardComponent from './CardComponent.vue'
     import popularComponet from './popularComponet.vue'
     import ApiLoader from './ApiLoader.vue'
-import PopularComponet from './popularComponet.vue'
+    import PopularComponet from './popularComponet.vue'
+    import JumboVideo from './JumboVideo.vue'
     export default {
         name: 'MainComponent',
         components: {
             CardComponent,
             ApiLoader,
             popularComponet,
+            JumboVideo
         },
         data() {
             return {
@@ -190,6 +191,7 @@ import PopularComponet from './popularComponet.vue'
     .card-popular{
         background-color: black !important;
         overflow-y: hidden;
+        overflow-x: hidden;
         width: 300px;
         height: 350px;
         flex-shrink: 0;
@@ -229,6 +231,9 @@ import PopularComponet from './popularComponet.vue'
         .info{
             display: block;
         }
+    }
+    .bordo{
+        border: 1px solid white;
     }
    
    

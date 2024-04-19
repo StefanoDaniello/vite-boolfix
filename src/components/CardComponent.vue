@@ -1,32 +1,30 @@
 <template>
 
-<div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-        <img :src="(image === 'https://image.tmdb.org/t/p/originalnull' ? '/public/images/NotFoundImg.png' : image)" class="card-img-top" :alt="title" :class="(prova ? 'd-none' : 'd-block')">
-    </div>
-
-    <div class="flip-card-back">
-        <h5 class="card-title text-center ">{{title}}</h5>
-            <div class="card-text">
-                <div class="flag m-auto my-1">
-                    <img :src="`https://flagcdn.com/w20/${flagimg()}.png`" :alt="lenguage" >
-                </div>
-                <div class="text-center">
-                    <span v-for="star in getStars(vote)"><i class="fa-solid fa-star text-white"></i></span>
-                    <span v-for="star in maxStars - getStars(vote)"><i class="fa-regular fa-star text-white"></i></span>
-                </div>
-                <div class="description">
-                    <p class="text-white my-2">{{description}}</p>
-                </div>
-                <p class="mx-2 text-end ">{{date}}</p>
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img :src="(image === 'https://image.tmdb.org/t/p/originalnull' ? '/public/images/NotFoundImg.png' : image)" class="card-img-top" :alt="title" :class="(prova ? 'd-none' : 'd-block')">
             </div>
+
+            <div class="flip-card-back">
+                <h5 class="card-title text-center ">{{title}}</h5>
+                <div class="card-text">
+                    <div class="flag m-auto my-1">
+                        <img :src="`https://flagcdn.com/w20/${flagimg()}.png`" :alt="lenguage" >
+                    </div>
+                    <div class="text-center">
+                        <span v-for="star in getStars(vote)"><i class="fa-solid fa-star text-white"></i></span>
+                        <span v-for="star in maxStars - getStars(vote)"><i class="fa-regular fa-star text-white"></i></span>
+                    </div>
+                    <div class="description">
+                        <p class="text-white my-2">{{description}}</p>
+                    </div>
+                    <p class="mx-2 text-end ">{{date}}</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
    
-
 </template>
 
 <script>
@@ -40,6 +38,7 @@
             vote: Number,
             lenguage: String,
             description: String,
+            index: Number
         },
         data() {
             return {
@@ -64,15 +63,15 @@
                     return 'gr'
                 }else if(this.lenguage === 'zh'){
                     return 'cn'
+                }else if(this.lenguage === 'hi'){
+                    return 'in'
+                }else if(this.lenguage === 'cs'){
+                    return 'cz'
                 }else{
                     return this.lenguage
                 }
-                
             }
         },
-      
-        
-
     }
 </script>
 

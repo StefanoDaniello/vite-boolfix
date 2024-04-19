@@ -1,32 +1,38 @@
 <template>
-    <video controls class="video-container" @click="videoplay" >
+    <video controls class="video-container" @click="videoplay" ref="intro">
       <source src="/src/video/Netflix-intro.mp4" type="video/mp4" >
     </video>
 </template>
 
 <script>
+    import{ store } from '../store'
     export default {
         name: 'VideoComponent',
         data() {
             return {
-                click:false
+                click:false,
+                store
+
             }
         },
         methods: {
             videoplay(){
                 if(!this.click){
-                this.click = true
-                    document.querySelector(".video-container").play()
-                    document.querySelector(".video-container").controls = true
-                    document.querySelector(".video-container").currentTime = 0;
+                this.store.JumboVideo = true
+                this.click = true;
+                const intro = this.$refs.intro; 
+                    intro.play()
+                    intro.controls = true
+                    intro.currentTime = 0;
                 setTimeout(() => {
-                    document.querySelector(".video-container").classList.add('d-none')
+                    intro.classList.add('d-none')
                 }, 4000);
                 }
             }
         },
         mounted() {
-            document.querySelector(".video-container").currentTime = 0.6;
+            const intro = this.$refs.intro; 
+            intro.currentTime = 0.6;
         }
     }
 </script>
