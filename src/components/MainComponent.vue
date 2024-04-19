@@ -1,12 +1,12 @@
 <template>
     <main>
+        
         <div class="container my-4 py-2 bg-danger text-white text-center bg-opacity-75 rounded-3" v-if="store.error.message">
             {{ this.store.error.message }}
         </div>
         <div class="container my-4 py-2 bg-danger text-white text-center bg-opacity-75 rounded-3 d-none ">
             Non e stato trovato alcun film o serie corrispondente alla ricerca
         </div>
-
         <JumboVideo/>
 
         <div class="container-fluid p-4 bg-black position-relative" :class="{'d-none': store.title}">
@@ -110,7 +110,8 @@
         },
         data() {
             return {
-                store
+                store,
+                io:false
             }
         },
         methods: {
@@ -161,7 +162,7 @@
                 left: 900,
                 behavior: "smooth",
             });
-            }
+            },
         }
     }
 </script>

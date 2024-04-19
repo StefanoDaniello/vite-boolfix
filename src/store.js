@@ -1,5 +1,4 @@
 import { reactive } from "vue";
-import JumboVideo from "./components/JumboVideo.vue";
 
 export const store = reactive({
     apiUrl: "https://api.themoviedb.org/3/",
@@ -32,5 +31,4 @@ export const store = reactive({
         message: "",
     },
     title: false,
-    JumboVideo:null
 })

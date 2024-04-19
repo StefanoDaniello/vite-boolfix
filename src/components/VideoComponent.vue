@@ -1,5 +1,5 @@
 <template>
-    <video controls class="video-container" @click="videoplay" ref="intro">
+    <video controls class="video-container" @click="videoplay" ref="intro" >
       <source src="/src/video/Netflix-intro.mp4" type="video/mp4" >
     </video>
 </template>
@@ -18,11 +18,10 @@
         methods: {
             videoplay(){
                 if(!this.click){
-                this.store.JumboVideo = true
-                this.click = true;
-                const intro = this.$refs.intro; 
-                    intro.play()
-                    intro.controls = true
+                    this.click = true;
+                    const intro = this.$refs.intro; 
+                    intro.play();
+                    intro.controls = true;
                     intro.currentTime = 0;
                 setTimeout(() => {
                     intro.classList.add('d-none')
