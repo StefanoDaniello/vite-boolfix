@@ -25,6 +25,7 @@
                     intro.currentTime = 0;
                 setTimeout(() => {
                     intro.classList.add('d-none')
+                    this.$emit('start')
                 }, 4000);
                 }
             }
