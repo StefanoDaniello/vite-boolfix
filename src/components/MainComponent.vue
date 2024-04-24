@@ -108,13 +108,14 @@
     import CardComponent from './CardComponent.vue'
     import popularComponet from './popularComponet.vue'
     import ApiLoader from './ApiLoader.vue'
-    import PopularComponet from './popularComponet.vue'
+    import VideoComponent from './VideoComponent.vue'
     export default {
         name: 'MainComponent',
         components: {
             CardComponent,
             ApiLoader,
             popularComponet,
+            VideoComponent
         },
         data() {
             return {
