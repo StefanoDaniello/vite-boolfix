@@ -1,6 +1,6 @@
 <template>
     <main>
-        
+        <VideoComponent  @start="jumboplay"/>
         <div class="container my-4 py-2 bg-danger text-white text-center bg-opacity-75 rounded-3" v-if="store.error.message">
             {{ this.store.error.message }}
         </div>
@@ -8,7 +8,7 @@
             Non e stato trovato alcun film o serie corrispondente alla ricerca
         </div>
 
-        <div class="position-relative" :class="{'d-none': store.title}" @start="jumboplay">
+        <div class="position-relative" :class="{'d-none': store.title}">
             <video  class="video-container" ref="jumbovideo"  >
                 <source src="/src/video/jumboVideo.mp4" type="video/mp4" >
             </video>
@@ -87,15 +87,15 @@
             <h2 :class="{'d-none': !store.title}" class="text-white">Serie</h2> 
             <div class="cards-container" ref="card2">
                 <div class="left-button" @click="leftButton2" :class="{'d-none': !store.title}"><i class="fa-solid fa-angle-left text-white"></i></div>
-                <div class="card" v-for="tv in store.tvList" >
-                    <CardComponent
-                    :image="this.store.imageUrl + tv.poster_path"
-                    :title="tv.original_name"
-                    :date="tv.first_air_date"
-                    :vote="tv.vote_average"
-                    :description="tv.overview"
-                    :lenguage="tv.original_language"/>
-                </div>
+                    <div class="card" v-for="tv in store.tvList" >
+                        <CardComponent
+                        :image="this.store.imageUrl + tv.poster_path"
+                        :title="tv.original_name"
+                        :date="tv.first_air_date"
+                        :vote="tv.vote_average"
+                        :description="tv.overview"
+                        :lenguage="tv.original_language"/>
+                    </div>
                 <div class="right-button" @click="rightButton2" :class="{'d-none': !store.title}"><i class="fa-solid fa-angle-right text-white"></i></div>
             </div>
         </div>
@@ -182,31 +182,30 @@
                     video.currentTime = 0.5;
                     video.muted = true;
                     video.play();
-                }else{
-                    if(this.store.title){
-                        const video = this.$refs.jumbovideo;
-                        video.pause();
-                        video.currentTime = 0;
-                        video.muted = true;
-                        video.controls = false;
-                    }
+                }else if (this.store.title){
+                    const video = this.$refs.jumbovideo;
+                    video.pause();
+                    video.currentTime = 0;
+                    video.muted = true;
+                    video.controls = false;
                 }
             },
             muted(){
                 const video = this.$refs.jumbovideo; 
                 video.muted = !video.muted;
                 this.volume=!this.volume
+
             }
         },
         mounted() {
-            this.jumboplay()
+          
         }
     }
 </script>
 
 <style lang="scss" scoped>
     main{
-        height: calc(100vh - 90px);
+        height: calc(100vh - 100px) ;
         overflow-y: auto;
         background-color: black;
     }

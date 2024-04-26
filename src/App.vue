@@ -1,7 +1,6 @@
 <template>
   <HeaderComponent @search="setsearch"/>
   <MainComponent/>
-  <VideoComponent/>
 </template>
 
 <script>
@@ -11,14 +10,12 @@ import { store } from './store';
 import HeaderComponent from './components/HeaderComponent.vue';
 import MainComponent from './components/MainComponent.vue';
 import ApiLoader from './components/ApiLoader.vue';
-import VideoComponent from './components/VideoComponent.vue';
   export default {
     name: 'App',
     components: {
       HeaderComponent,
       MainComponent,
       ApiLoader,
-      VideoComponent
 
     },
     data() {
