@@ -72,12 +72,12 @@
                 <div class="left-button" @click="leftButton1" :class="{'d-none': !store.title}"><i class="fa-solid fa-angle-left text-white"></i></div>
                 <div class="card" v-for="movie in store.movieList" >
                     <CardComponent
-                    :image="this.store.imageUrl + movie.poster_path"
-                    :title="movie.title"
-                    :date="movie.release_date"
-                    :vote="movie.vote_average"
-                    :description="movie.overview"
-                    :lenguage="movie.original_language"/>
+                        :image="this.store.imageUrl + movie.poster_path"
+                        :title="movie.title"
+                        :date="movie.release_date"
+                        :vote="movie.vote_average"
+                        :description="movie.overview"
+                        :lenguage="movie.original_language"/>
                 </div>
                 <div class="right-button" @click="rightButton1" :class="{'d-none': !store.title}"><i class="fa-solid fa-angle-right text-white"></i></div>
             </div>
@@ -89,12 +89,12 @@
                 <div class="left-button" @click="leftButton2" :class="{'d-none': !store.title}"><i class="fa-solid fa-angle-left text-white"></i></div>
                     <div class="card" v-for="tv in store.tvList" >
                         <CardComponent
-                        :image="this.store.imageUrl + tv.poster_path"
-                        :title="tv.original_name"
-                        :date="tv.first_air_date"
-                        :vote="tv.vote_average"
-                        :description="tv.overview"
-                        :lenguage="tv.original_language"/>
+                            :image="this.store.imageUrl + tv.poster_path"
+                            :title="tv.original_name"
+                            :date="tv.first_air_date"
+                            :vote="tv.vote_average"
+                            :description="tv.overview"
+                            :lenguage="tv.original_language"/>
                     </div>
                 <div class="right-button" @click="rightButton2" :class="{'d-none': !store.title}"><i class="fa-solid fa-angle-right text-white"></i></div>
             </div>
